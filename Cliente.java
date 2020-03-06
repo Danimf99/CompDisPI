@@ -4,12 +4,13 @@ import java.rmi.*;
 public class Cliente {
 
    public static void main(String args[]) {
-      String hostName, numPuerto, registryURL;
+      String hostName = "localhost", registryURL;
       int numHilos = 0, pares;
       InputStreamReader is = new InputStreamReader(System.in);
       BufferedReader br = new BufferedReader(is);
       MontecarloInterface montecarlo;
       Thread[] hilos;
+      int numPuerto = 1234;
       int paresTotales = 0;
       
       try {
@@ -18,11 +19,6 @@ public class Cliente {
       
          hilos = new Thread[numHilos];
          for( int i = 0; i < numHilos; i++){
-            System.out.print("\n-Servidor["+i+"] Introduzca el dominio: ");
-            hostName = br.readLine();
-
-            System.out.print("\n-Servidor["+i+"] Introduzca el nº de puerto: ");
-            numPuerto = br.readLine();
 
             registryURL = "rmi://" + hostName+ ":" + numPuerto + "/pi";
             montecarlo = (MontecarloInterface)Naming.lookup(registryURL);
