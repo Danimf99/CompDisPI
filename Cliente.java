@@ -19,7 +19,7 @@ public class Cliente {
       
          hilos = new Thread[numHilos];
          for( int i = 0; i < numHilos; i++){
-
+            //TODO pedir hostname y numero de puertooooo
             registryURL = "rmi://" + hostName+ ":" + numPuerto + "/pi";
             montecarlo = (MontecarloInterface)Naming.lookup(registryURL);
 
@@ -42,7 +42,6 @@ public class Cliente {
 
          for( int i = 0; i < numHilos; i++){
             paresDentro+= ((HiloLlamada) hilos[i]).getParesDentro();
-            System.out.println(((HiloLlamada)hilos[i]).getParesDentro());
          }
 
          double PI=(double)paresDentro/(double)paresTotales;
